@@ -1,15 +1,34 @@
 // Here are the different types of blocks
 // supported by MakeCode
 
-//% color="#4C97FF"
+//% color="#FF9C18"
 namespace pxt_testSS {
 
     /**
      * This is a statement block
      */
     //% block
-    export function show() {
+    export function buttonChecker() {
+        let mode = 0
+        input.onButtonPressed(Button.A, function () {
+            if (mode < 1) {
+                mode += 1
+            } else {
+                mode = 0
+            }
+        })
+    }
 
+    //% block
+    export function potLog() {
+        let Potentiometer = 0
+        if (mode == 0) {
+            Potentiometer = pins.analogReadPin(AnalogPin.P0)
+            pins.analogWritePin(AnalogPin.P0, Potentiometer)
+        } else {
+            Potentiometer = pins.analogReadPin(AnalogPin.P1)
+            pins.analogWritePin(AnalogPin.P0, Potentiometer)
+        }
     }
 
     /**
