@@ -3,13 +3,14 @@
 
 //% color="#FF9C18"
 namespace pxt_testSS {
-
+    let Potentiometer = 0
+    let mode = 0
     /**
      * This is a statement block
      */
     //% block
     export function buttonChecker() {
-        let mode = 0
+        
         input.onButtonPressed(Button.A, function () {
             if (mode < 1) {
                 mode += 1
@@ -21,7 +22,7 @@ namespace pxt_testSS {
 
     //% block
     export function potLog() {
-        let Potentiometer = 0
+        
         if (mode == 0) {
             Potentiometer = pins.analogReadPin(AnalogPin.P0)
             pins.analogWritePin(AnalogPin.P0, Potentiometer)
