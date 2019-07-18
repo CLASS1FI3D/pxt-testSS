@@ -3,12 +3,12 @@
 
 //% color="#FF9C18"
 namespace pxt_testSS {
-
+    let Potentiometer = 0
+    let mode = 0
     //% block="Slim Circuit 1 || Input %potPin, Output %ledPin"
     //% expandableArgumentMode="toggle"    
     export function Slim_Circuit(potPin: AnalogPin, ledPin: AnalogPin) {
-        let Potentiometer = 0
-        let mode = 0
+        
         
         input.onButtonPressed(Button.A, function () {
             mode += 1
