@@ -20,20 +20,19 @@ namespace pxt_testSS {
     }
 
     //% block
-    export function Slim_Circuit_1() {
+    export function Slim_Circuit_2() {
         let Potentiometer = 0
         let mode = 0
 
-        
+
         input.onButtonPressed(Button.A, function () {
-            if (mode < 1) {
-                mode += 1
-            } else {
+            mode += 1
+            if (mode == 2) {
                 mode = 0
             }
             basic.showNumber(mode)
         })
-        
+
         if (mode == 0) {
             Potentiometer = pins.analogReadPin(AnalogPin.P0)
             pins.analogWritePin(AnalogPin.P0, Potentiometer)
