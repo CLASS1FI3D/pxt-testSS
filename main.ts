@@ -5,6 +5,7 @@
 namespace pxt_testSS {
     let Potentiometer = 0
     let mode = 1
+    basic.showNumber(mode)   
     //% block="Slim Circuit 1 || - Pot %potPin, LED %ledPin, LDR %ldrPin"
     //% expandableArgumentMode="toggle"    
     export function Slim_Circuit(potPin: AnalogPin, ledPin: AnalogPin, ldrPin: AnalogPin) {
