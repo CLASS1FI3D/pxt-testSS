@@ -23,13 +23,15 @@ namespace pxt_testSS {
     export function Slim_Circuit_1() {
         let Potentiometer = 0
         let mode = 0
-        basic.showNumber(mode)
+
+        
         input.onButtonPressed(Button.A, function () {
             if (mode < 1) {
                 mode += 1
             } else {
                 mode = 0
             }
+            basic.showNumber(mode)
         })
         
         if (mode == 0) {
