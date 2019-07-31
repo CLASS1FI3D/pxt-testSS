@@ -6,25 +6,25 @@
 */
 
 // Enum for the Sonar Units
-// enum PingUnit {
-//     //% block="μs"
-//     MicroSeconds,
-//     //% block="cm"
-//     Centimeters,
-//     //% block="inches"
-//     Inches
-// }
+enum sonarUnit {
+    //% block="μs"
+    MicroSeconds,
+    //% block="cm"
+    Centimeters,
+    //% block="inches"
+    Inches
+}
 
 
 //% color="#FF9C18"
 namespace pxt_testSS {
     // Circuit 1
-    let potInput = 0;
-    let ldrInput = 0;
-    let mode = 1;
+    let potInput: number = 0;
+    let ldrInput: number = 0;
+    let mode: number = 1;
 
     // Circuit 2
-    let tripDistance = 0;
+    let tripDistance: number = 0;
 
     // Global
     basic.showNumber(mode)
@@ -72,7 +72,7 @@ namespace pxt_testSS {
             case 1:
                 // Lets get some averages
                 for (let i = 0; i < 5; i++) {
-                    // tripDistance += ping(sonarTrigPin, sonarEchoPin, PingUnit.Centimeters);
+                    tripDistance += ping(sonarTrigPin, sonarEchoPin, sonarUnit.Centimeters);
                 }
                 // Sort the average out
                 tripDistance = tripDistance / 5;
@@ -81,7 +81,7 @@ namespace pxt_testSS {
                 break;
             // Ready to detect
             case 2:
-                let distance = 100//ping(sonarTrigPin, sonarEchoPin, PingUnit.Centimeters);
+                let distance = ping(sonarTrigPin, sonarEchoPin, sonarUnit.Centimeters);
                 if (distance < tripDistance) {
                     // Something has broken the beam
                     pins.digitalWritePin(ledPin, 1);
@@ -93,24 +93,24 @@ namespace pxt_testSS {
 
     }
 
-    // function ping(trig: DigitalPin, echo: DigitalPin, unit: PingUnit, maxCmDistance = 500): number {
-    //     // send pulse
-    //     pins.setPull(trig, PinPullMode.PullNone);
-    //     pins.digitalWritePin(trig, 0);
-    //     control.waitMicros(2);
-    //     pins.digitalWritePin(trig, 1);
-    //     control.waitMicros(10);
-    //     pins.digitalWritePin(trig, 0);
+    function ping(trig: DigitalPin, echo: DigitalPin, unit: sonarUnit, maxCmDistance = 500): number {
+        // send pulse
+        pins.setPull(trig, PinPullMode.PullNone);
+        pins.digitalWritePin(trig, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(trig, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(trig, 0);
 
-    //     // read pulse
-    //     const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * 58);
+        // read pulse
+        const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * 58);
 
-    //     switch (unit) {
-    //         case PingUnit.Centimeters: return Math.idiv(d, 58);
-    //         case PingUnit.Inches: return Math.idiv(d, 148);
-    //         default: return d;
-    //     }
-    // }
+        switch (unit) {
+            case sonarUnit.Centimeters: return Math.idiv(d, 58);
+            case sonarUnit.Inches: return Math.idiv(d, 148);
+            default: return d;
+        }
+    }
 
     function checkMode(modes: number) {
         input.onButtonPressed(Button.A, function () {
