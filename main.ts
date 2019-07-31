@@ -3,7 +3,8 @@
 
 //% color="#FF9C18"
 namespace pxt_testSS {
-    let Potentiometer = 0
+    let potInput = 0
+    let ldrInput = 0
     let mode = 1
     basic.showNumber(mode)
     //% block="Slim Circuit 1 || - Pot %potPin, LED %ledPin, LDR %ldrPin"
@@ -12,7 +13,7 @@ namespace pxt_testSS {
 
         input.onButtonPressed(Button.A, function () {
             mode += 1
-            if (mode >= 3) {
+            if (mode >= 4) {
                 mode = 1
             }
             basic.showNumber(mode)
@@ -20,13 +21,21 @@ namespace pxt_testSS {
 
         switch (mode) {
             case 1:
-                Potentiometer = pins.analogReadPin(potPin)
-                pins.analogWritePin(ledPin, 356)
+                potInput = pins.analogReadPin(potPin)
+                pins.analogWritePin(ledPin, potInput)
                 break;
             case 2:
-                Potentiometer = pins.analogReadPin(ldrPin)
-                pins.analogWritePin(ledPin, Potentiometer)
+                ldrInput = pins.analogReadPin(ldrPin)
+                pins.analogWritePin(ledPin, ldrInput)
                 break;
+            case 3:
+                potInput = pins.analogReadPin(potPin)
+                ldrInput = pins.analogReadPin(ldrPin)
+                if (ldrInput > potInput) {
+                    pins.analogWritePin(ledPin, 1023)
+                } else {
+                    pins.analogWritePin(ledPin, 0)
+                }
             default:
                 break;
         }
