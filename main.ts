@@ -68,14 +68,24 @@ namespace pxt_testSS {
         switch (mode) {
             // Set the trip distance
             case 1:
+                // Lets get some averages
                 for (let i = 0; i < 5; i++) {
-                    tripDistance += ping(sonarTrigPin, sonarEchoPin, PingUnit.Centimeters); 
+                    tripDistance += ping(sonarTrigPin, sonarEchoPin, PingUnit.Centimeters);
                 }
-                tripDistance = tripDistance / 5;                
+                // Sort the average out
+                tripDistance = tripDistance / 5;
+                // Just for safety we only want 95% of what was measured
+                tripDistance = 95 / 100 * tripDistance;
                 break;
             // Ready to detect
             case 2:
-                
+                let distance = ping(sonarTrigPin, sonarEchoPin, PingUnit.Centimeters);
+                if (distance < tripDistance) {
+                    // Something has broken the beam
+                    pins.digitalWritePin(ledPin, 1);
+                } else {
+                    pins.digitalWritePin(ledPin, 0);
+                }
                 break;
         }
 
