@@ -18,6 +18,7 @@ namespace pxt_testSS {
             basic.showNumber(mode)
         })
 
+        // Which mode are we in??
         switch (mode) {
             case 1:
                 Potentiometer = pins.analogReadPin(potPin)
