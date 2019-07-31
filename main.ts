@@ -19,12 +19,12 @@ enum PingUnit {
 //% color="#FF9C18"
 namespace pxt_testSS {
     // Circuit 1
-    let potInput: number = 0;
-    let ldrInput: number = 0;
-    let mode: number = 1;
+    let potInput = 0;
+    let ldrInput = 0;
+    let mode = 1;
 
     // Circuit 2
-    let tripDistance: number = 0;
+    let tripDistance = 0;
 
     // Global
     basic.showNumber(mode)
