@@ -26,7 +26,7 @@ namespace pxt_testSS {
     //% expandableArgumentMode="toggle"    
     export function Circuit_1(potPin: AnalogPin, ledPin: AnalogPin, ldrPin: AnalogPin) {
 
-        checkMode(4);
+        checkMode(3);
 
         // Which mode are we in??
         switch (mode) {
@@ -81,14 +81,14 @@ namespace pxt_testSS {
     function checkMode(modes: number) {
         input.onButtonPressed(Button.A, function () {
             mode -= 1
-            if (mode <= 0) {
+            if (mode < 1) {
                 mode = modes
             }
             basic.showNumber(mode)
         })
         input.onButtonPressed(Button.B, function () {
             mode += 1
-            if (mode >= modes) {
+            if (mode > modes) {
                 mode = 1
             }
             basic.showNumber(mode)
