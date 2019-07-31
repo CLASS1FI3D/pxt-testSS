@@ -9,7 +9,7 @@ namespace pxt_testSS {
     basic.showNumber(mode)
     //% block="Slim Circuit 1 || - Pot %potPin, LED %ledPin, LDR %ldrPin"
     //% expandableArgumentMode="toggle"    
-    export function Slim_Circuit(potPin: AnalogPin, ledPin: AnalogPin, ldrPin: AnalogPin) {
+    export function Circuit_1(potPin: AnalogPin, ledPin: AnalogPin, ldrPin: AnalogPin) {
 
         input.onButtonPressed(Button.A, function () {
             mode += 1
@@ -41,5 +41,9 @@ namespace pxt_testSS {
                 break;
         }
     }
+    //% block="Slim Circuit 2 || - Pot %potPin, LED %ledPin, LDR %ldrPin"
+    //% expandableArgumentMode="toggle"    
+    export function Circuit_2(potPin: AnalogPin, ledPin: AnalogPin, ldrPin: AnalogPin) {
 
+    }
 }
