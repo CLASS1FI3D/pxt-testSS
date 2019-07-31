@@ -6,14 +6,14 @@
 */
 
 // Enum for the Sonar Units
-enum PingUnit {
-    //% block="μs"
-    MicroSeconds,
-    //% block="cm"
-    Centimeters,
-    //% block="inches"
-    Inches
-}
+// enum PingUnit {
+//     //% block="μs"
+//     MicroSeconds,
+//     //% block="cm"
+//     Centimeters,
+//     //% block="inches"
+//     Inches
+// }
 
 
 //% color="#FF9C18"
