@@ -18,9 +18,14 @@ enum PingUnit {
 
 //% color="#FF9C18"
 namespace pxt_testSS {
-    let potInput = 0
-    let ldrInput = 0
-    let mode = 1
+    // Circuit 1
+    let potInput: number = 0;
+    let ldrInput: number = 0;
+    let mode: number = 1;
+
+    // Circuit 2
+    let tripDistance: number = 0;
+
     basic.showNumber(mode)
     //% block="Slim Circuit 1 || - Pot %potPin, LED %ledPin, LDR %ldrPin"
     //% expandableArgumentMode="toggle"    
@@ -56,6 +61,23 @@ namespace pxt_testSS {
         // This circuit takes the distance from a point as base line
         // If distance is reduced, then something has tripped the 'beam'
         // Sound alarm
+
+        checkMode(2);
+
+        // Which mode are we in?
+        switch (mode) {
+            // Set the trip distance
+            case 1:
+                for (let i = 0; i < 5; i++) {
+                    tripDistance += ping(sonarTrigPin, sonarEchoPin, PingUnit.Centimeters); 
+                }
+                tripDistance = tripDistance / 5;                
+                break;
+            // Ready to detect
+            case 2:
+                
+                break;
+        }
 
     }
 
