@@ -1,9 +1,9 @@
 // Makerverse
 
-/* Special Notes:
+/** Special Notes:
  * Code bases forked
  * Sonar - https://github.com/microsoft/pxt-sonar
-*/
+ */
 
 // Enum for the Sonar Units
 enum sonarUnit {
@@ -29,6 +29,9 @@ namespace pxt_testSS {
     // Global
     basic.showNumber(mode)
 
+    /**
+     * Slim Circuit One. Play with LED's, adjust brightness etc.
+     */ 
     //% block="Slim Circuit 1 || - Pot %potPin, LED %ledPin, LDR %ldrPin"
     //% expandableArgumentMode="toggle"    
     export function Circuit_1(potPin: AnalogPin, ledPin: AnalogPin, ldrPin: AnalogPin) {
