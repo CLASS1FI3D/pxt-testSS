@@ -57,9 +57,9 @@ namespace pxt_testSS {
                 break;
         }
     }
-    //% block="Slim Circuit 2 || - Sonar Trigger %sonarTrigPin, Sonar Echo %sonarEchoPin, LED %ledPin"
+    //% block="Slim Circuit 2 || - Sonar Trigger %sonarTrigPin, Sonar Echo %sonarEchoPin, Buzzer %buzzPin"
     //% expandableArgumentMode="toggle"    
-    export function Circuit_2(sonarTrigPin: DigitalPin, sonarEchoPin: DigitalPin, ledPin: DigitalPin) {
+    export function Circuit_2(sonarTrigPin: DigitalPin, sonarEchoPin: DigitalPin, buzzPin: DigitalPin) {
         // This circuit takes the distance from a point as base line
         // If distance is reduced, then something has tripped the 'beam'
         // Sound alarm
@@ -84,9 +84,9 @@ namespace pxt_testSS {
                 let distance = ping(sonarTrigPin, sonarEchoPin, sonarUnit.Centimeters);
                 if (distance < tripDistance) {
                     // Something has broken the beam
-                    pins.digitalWritePin(ledPin, 1);
+                    pins.digitalWritePin(buzzPin, 1);
                 } else {
-                    pins.digitalWritePin(ledPin, 0);
+                    pins.digitalWritePin(buzzPin, 0);
                 }
                 break;
         }
